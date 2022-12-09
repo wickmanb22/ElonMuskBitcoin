@@ -1,0 +1,10 @@
+## Did Elon Musk invent Bitcoin under the pseudonym Satoshi Nakamoto?
+
+Bitcoin is a widely-used and controversial cryptocurrency that was created in 2008 by Satoshi Nakamoto. Nakamoto aggregated a wealth of literature on digital and decentralized cryptocurrencies in their seminal paper "Bitcoin: A Peer-to-Peer Electronic Cash System" (2008). Since then, Bitcoin has grown into one of the most popular digital currencies and has made its way into popular culture. However, one question still lingers; who is Satoshi Nakamoto? Satoshi Nakamoto is a presumed pseudonym for the person (or people) who designed the original Bitcoin ideation and software. However, Nakamoto's involvement in Bitcoin and internet presence stops rather abruptly in mid-2010. There has been much speculation around the true identity of Nakamoto.
+
+One of the names linked to Satoshi Nakamoto is Elon Musk. Many famous scientists and even a former SpaceX intern have asserted that Elon Musk invented Bitcoin under the Satoshi Nakamoto pseudonym. This theory is not outlandish because Musk co-founded and wrote the software for PayPal, a peer-to-peer payment platform. Musk also wrote the PayPal source code in a specific C++ format, the same format which was used for Bitcoin. Additionally, linguists have referred to Musk's and Nakamoto's repeated use of the phrases "bloody hard" and "order of magnitude" as evidence of the connection. In this post, I extend this language analysis and compare the rate of use of common prepositions and articles. I use a Bayesion model for the analysis, using a Poisson-Gamma and NegativeBinomial-Gamma posterior distributions to model stop word frequencies. The full project is explained in the accompanying blogpost titled `write_up.RMD` in the `code` folder.
+
+# Repository Layout
+`code` contains the `Bayesian_Analysis.R` file for the project analysis and the `write_up.RMD` markdown file for the accompanying blogpost. I suspect the blogpost will be of most interest to viewers of this repository.
+
+`data` contains the writing samples for Musk and Nakamoto.
