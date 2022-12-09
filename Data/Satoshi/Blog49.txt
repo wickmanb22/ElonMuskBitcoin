@@ -1,0 +1,135 @@
+I think it would be possible for BitDNS to be a
+completely separate network and separate block
+chain, yet share CPU power with Bitcoin. The only
+overlap is to make it so miners can search for proofof-work for both networks simultaneously.
+The networks wouldn’t need any coordination.
+Miners would subscribe to both networks in parallel.
+They would scan SHA such that if they get a hit, they
+potentially solve both at once. A solution may be for
+just one of the networks if one network has a lower
+difficulty.
+I think an external miner could call getwork on both
+programs and combine the work. Maybe call Bitcoin,
+get work from it, hand it to BitDNS getwork to
+combine into a combined work.
+Instead of fragmentation, networks share and
+augment each other’s total CPU power. This would
+solve the problem that if there are multiple networks,
+they are a danger to each other if the available CPU
+power gangs up on one. Instead, all networks in the
+world would share combined CPU power, increasing
+the total strength. It would make it easier for small
+networks to get started by tapping into a ready base
+of miners.
+
+The incentive is to get the rewards from the extra
+side chains also for the same work.
+While you are generating bitcoins, why not also get
+free domain names for the same work?
+If you currently generate 50 BTC per week, now you
+could get 50BTC and some domain names too.
+You have one piece of work. If you solve it, it will
+solve a block from both Bitcoin and BitDNS. In
+concept, they’re tied together by a Merkle Tree. To
+hand it in to Bitcoin, you break off the BitDNS
+branch, and to hand it in to BitDNS, you break off the
+Bitcoin branch.
+Page 294
+In practice, to retrofit it for Bitcoin, the BitDNS side
+would have to have maybe ~200 extra bytes, but
+that’s not a big deal. You’ve been talking about 50
+domains per block, which would dwarf that little 200
+bytes per block for backward compatibility. We could
+potentially schedule a far in future block when
+Bitcoin would upgrade to a modernised arrangement
+with the Merkle Tree on top, if we care enough about
+saving a few bytes.
+Note that the chains are below this new Merkle Tree.
+That is, each of Bitcoin and BitDNS have their own
+chain links inside their blocks. This is inverted from
+the common timestamp server arrangement, where
+the chain is on top and then the Merkle Tree,
+because that creates one common master chain.
+This is two timestamp servers not sharing a chain.
+
+Piling every proof-of-work quorum system in the
+world into one dataset doesn’t scale.
+Bitcoin and BitDNS can be used separately. Users
+shouldn’t have to download all of both to use one or
+the other. BitDNS users may not want to download
+everything the next several unrelated networks
+decide to pile in either.
+The networks need to have separate fates. BitDNS
+users might be completely liberal about adding any
+
+large data features since relatively few domain
+registrars are needed, while Bitcoin users might get
+increasingly tyrannical about limiting the size of the
+chain so it’s easy for lots of users and small devices.
+Fears about securely buying domains with Bitcoins
+are a red herring. It’s easy to trade Bitcoins for other
+non-repudiable commodities.
+If you’re still worried about it, it’s cryptographically
+possible to make a risk free trade. The two parties
+would set up transactions on both sides such that
+when they both sign the transactions, the second
+signer’s signature triggers the release of both. The
+second signer can’t release one without releasing the
+other.
+
+Right, the exchange rate between domains and
+bitcoins would float.
+A longer interval than 10 minutes would be
+appropriate for BitDNS.
+So far in this discussion there’s already a lot of
+housekeeping data required. It will be much easier if
+you can freely use all the space you need without
+worrying about paying fees for expensive space in
+Bitcoin’s chain. Some transactions:
+Changing the IP record.
+Name change. A domain object could entitle you to
+one domain, and you could change it at will to any
+name that isn’t taken. This would encourage users to
+free up names they don’t want anymore. Generated
+domains start out blank and the miner sells it to
+someone who changes it to what they want.
+Renewal. Could be free, or maybe require consuming
+another domain object to renew. In that case,
+
+domain objects (domaincoins?) could represent the
+right to own a domain for a year. The spent fee goes
+to the miners in the next block fee.
+
+I agree. All transactions, IP changes, renewals, etc.
+should have some fee that goes to the miners.
+You might consider a certain amount of work to
+generate a domain, instead of a fixed total
+circulation. The work per domain could be on a
+schedule that grows with Moore’s Law. That way the
+number of domains would grow with demand and the
+number of people using it.
+
+Not locktime.
+There’s a possible design for far in the future:
+You intentionally write a double-spend. You write it
+with the same inputs and outputs, but this time with
+a fee. When your doublespend gets into a block, the
+first spend becomes invalid. The payee does not
+really notice, because at the moment the new
+transaction becomes valid, the old one becomes
+invalid, and the new transaction simply takes its
+place.
+It’s easier said than implemented. There would be a
+fair amount of work to make a client that correctly
+writes the double-spend, manages the two versions
+in the wallet until one is chosen, handles all the
+corner cases. Every assumption in the existing code
+is that you’re not trying to write double-spends.
+There would need to be some changes on the Bitcoin
+Miner side also, to make the possibility to accept a
+double-spend into the transaction pool, but only
+strictly if the inputs and outputs match and the
+transaction fee is higher. Currently, double-spends
+are never accepted into the transaction pool, so
+every node bears witness to which transaction it saw
+first by working to put it into a block.

@@ -1,0 +1,8 @@
+It is a bit tricky because we have to figure out how to improve the cost of trips to Mars by five million percent. This
+translates to an improvement of approximately four-and-ahalf orders of magnitude. This is not easy. It sounds virtually
+impossible, but there are ways to do it.
+These are the key elements that are needed in order to
+achieve the four-and-a-half orders of magnitude improvement. Most of the improvement would come from full reusability—somewhere between two and two-and-a-half orders
+of magnitude. The other two orders of magnitude would come
+from refilling in orbit, propellant production on Mars, and
+choosing the right propellant

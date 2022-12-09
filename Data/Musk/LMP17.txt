@@ -1,0 +1,3 @@
+Now I want to talk about the value of orbital refilling. This is also extremely important. If you just fly BFR to orbit and do not do any refilling, it is pretty good—you'll get 150 tons to low Earth orbit, and have no fuel to go anywhere else.
+
+However, if you send up tankers and refill in orbit, you can refill the tanks all the way to the top and get 150 tons all the way to Mars. And if the tanker has high reuse capability, then you are just paying for the cost of propellant—the cost of oxygen and the cost of methane is extremely low. If that is all you are dealing with, the cost of refilling your spaceship on orbit is tiny and you can get 150 tons all the way to Mars. So automated rendezvous and docking and refilling are absolutely fundamental.

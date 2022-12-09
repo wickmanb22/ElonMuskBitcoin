@@ -1,0 +1,68 @@
+Here’s an outline of the kind of escrow transaction
+that’s possible in software. This is not implemented
+and I probably won’t have time to implement it soon,
+but just to let you know what’s possible.
+The basic escrow: The buyer commits a payment to
+escrow. The seller receives a transaction with the
+money in escrow, but he can’t spend it until the
+buyer unlocks it. The buyer can release the payment
+at any time after that, which could be never. This
+does not allow the buyer to take the money back,
+but it does give him the option to burn the money
+out of spite by never releasing it. The seller has the
+option to release the money back to the buyer.
+While this system does not guarantee the parties
+against loss, it takes the profit out of cheating.
+If the seller doesn’t send the goods, he doesn’t get
+paid. The buyer would still be out the money, but at
+least the seller has no monetary motivation to stiff
+him.
+Page 192
+The buyer can’t benefit by failing to pay. He can’t get
+the escrow money back. He can’t fail to pay due to
+lack of funds. The seller can see that the funds are
+committed to his key and can’t be sent to anyone
+else.
+Now, an economist would say that a fraudulent seller
+could start negotiating, such as “release the money
+and I’ll give you half of it back”, but at that point,
+there would be so little trust and so much spite that
+negotiation is unlikely. Why on earth would the
+fraudster keep his word and send you half if he’s
+already breaking his word to steal it? I think for
+modest amounts, almost everyone would refuse on
+principle alone.
+
+That makes it sound like it might somehow get lost
+and the parties can’t get it even if they want to
+cooperate.
+When you pay for something up front, you can’t get
+it back either. Consumers seem comfortable with
+that. It’s no worse than that.
+Either party always has the option to release it to the
+other.
+
+Then you must also be against the common system
+of payment up front, where the customer loses.
+Payment up front: customer loses, and the thief gets
+the money. Simple escrow: customer loses, but the
+thief doesn’t get the money either.
+Are you guys saying payment up front is better,
+because at least the thief gets the money, so at least
+someone gets it?
+Page 198
+Imagine someone stole something from you. You
+can’t get it back, but if you could, if it had a kill
+switch that could be remote triggered, would you do
+it? Would it be a good thing for thieves to know that
+everything you own has a kill switch and if they steal
+it, it’ll be useless to them, although you still lose it
+too? If they give it back, you can re-activate it.
+Imagine if gold turned to lead when stolen. If the
+thief gives it back, it turns to gold again.
+It still seems to me the problem may be one of
+presenting it the right way. For one thing, not being
+so blunt about “money burning” for the purposes of
+game theory discussion. The money is never truly
+burned. You have the option to release it at any time
+forever.

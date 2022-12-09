@@ -1,0 +1,20 @@
+You would get to use the booster and the tanker frequently.
+Therefore, it makes sense to load the spaceship into orbit with
+essentially tanks dry. If it has really big tanks that you use the
+booster and tanker to refill once in orbit, you can maximize
+the payload of the spaceship, so when it goes to Mars, you
+have a very large payload capability.
+Hence, refilling in orbit is one of the essential elements of
+this (Table 2). Without refilling in orbit, you would have
+roughly a half order of magnitude impact on the cost. What
+that means is that each order of magnitude is a factor of 10.
+Therefore, not refilling in orbit would mean roughly a 500%
+increase in the cost per ticket.
+It also allows us to build a smaller vehicle and lower the
+development cost, although this is still quite big. However, it
+would be much harder to build something that is 5–10 times
+the size. Furthermore, it reduces the sensitivity of the performance
+characteristics of the booster rocket and tanker. So, if there is a
+shortfall in the performance of any of the elements, you can
+make up for it by having one or two extra refilling trips to the
+spaceship. This is very important for reducing the susceptibility of the system to a performance shortfall. 

@@ -1,0 +1,379 @@
+---
+title: "Did Elon Musk Invent Bitcoin? A Bayesian Analysis of Speech Patterns"
+author: "Brian Wickman"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Introduction
+
+Bitcoin is a widely-used and controversial cryptocurrency that was created in 2008 by Satoshi Nakamoto. Nakamoto aggregated a wealth of literature on digital and decentralized cryptocurrencies in their seminal paper "Bitcoin: A Peer-to-Peer Electronic Cash System" (2008). Since then, Bitcoin has grown into one of the most popular digital currencies and has made its way into popular culture. However, one question still lingers; who is Satoshi Nakamoto? Satoshi Nakamoto is a presumed pseudonym for the person (or people) who designed the original Bitcoin ideation and software. However, Nakamoto's involvement in Bitcoin and internet presence stops rather abruptly in mid-2010. There has been much speculation around the true identity of Nakamoto.
+
+One of the names linked to Satoshi Nakamoto is Elon Musk. Many famous scientists and even a former SpaceX intern have asserted that Elon Musk invented Bitcoin under the Satoshi Nakamoto pseudonym. This theory is not outlandish because Musk co-founded and wrote the software for PayPal, a peer-to-peer payment platform. Musk also wrote the PayPal source code in a specific C++ format, the same format which was used for Bitcoin. Additionally, linguists have referred to Musk's and Nakamoto's repeated use of the phrases "bloody hard" and "order of magnitude" as evidence of the connection. In this post, I extend this language analysis and compare the rate of use of common prepositions and articles.
+
+I focus on the frequencies of word counts to determine if there exists differences in the speech patterns of Elon Musk and Satoshi Nakamoto. Since they write on different topics, I focus only on the counts of stop-words, words that are usually deemed insignificant and filtered out before natural language processing. However, these words are not influenced by the topic of the written samples so they work for our purposes. 
+
+The writing samples for Satoshi Nakamoto come from *The Book of Satoshi: The Collected Writings of Bitcoin Creator Satoshi Nakamoto* (2014) by Phil Champagne. All of Nakamoto's 51 writing samples are posts on computer forums where he outlaid his plan for Bitcoin and collaborated with other computer scientists.These posts tend to be technical, concise, and even colloquial at times as he discusses the future of Bitcoin with forum participants. 
+
+To find a similar form of prose for Elon, I turn to two of his papers on the future of humanity; *Making Humans a Multi-Planetary Species* (2017) and *Making Life Multi-Planetary* (2018). These papers outline Elon's plan to get to Mars and eventually colonize it. The papers are long but broken down into many disjoint sections which I count as separate writing samples. I use the word 'disjoint' as a relative term, as Nakamoto's forum posts were separate but about the same topic. In addition, I include Musk's two recent emails to the Twitter staff. In total, both authors have 51 writing samples that are about technical topics but presented rather informally.
+
+
+```{r, results='hide', message=FALSE, warning=FALSE}
+# Load packages
+  library(tidyverse)
+  library(data.table)
+  library(ggthemes)
+  library(tm)  
+  library(SnowballC)
+  library(latex2exp)
+  library(runjags)
+  library(coda)
+```
+
+
+## Exploratory Analysis
+
+Here is a closer look at the two samples. The data includes 7293 observations on the following six variables; `author` is either Musk or Nakamoto, `sample` is the writing sample number for an author; `word` is the word that is counted, `freq` is the frequency of the word in a sample, `total_words` is the number of words in the sample, and `rate` is the fraction of the writing sample that is that word.
+
+```{r, echo = FALSE}
+# Load data
+  data <- read.csv("../Data/Clean/SatoshiMusk.csv") %>%
+    select(author, sample, word, freq, total_words, rate = per1000) %>%
+  filter(total_words < 2000)
+  summary(data)
+```
+
+Before proceeding with the analysis, I check to make sure the size of the samples are similar. The vertical lines on the graph below mark the median word count for each author; Musk (149) and Nakamoto (201). The distributions appear to be comparable.
+
+```{r pressure, echo=FALSE}
+  medians <- data %>% group_by(author) %>% summarise(medians = median(total_words))
+  musk_med <- medians[[1,2]]
+  nakamoto_med <- medians[[2,2]]
+  data %>%
+      distinct(sample, author, total_words) %>%
+      ggplot() +
+      geom_density(aes(total_words, fill = author), alpha = 0.5) +
+      scale_fill_manual(
+        "Author",
+        values = c("firebrick4", "green4"),
+        labels = c("Musk","Nakamoto")
+      ) +
+      theme_clean() +
+      labs(
+        x = "Word Count",
+        title = "Distribution of Sample Word Counts"
+      ) +
+      geom_vline(xintercept = musk_med, color = "firebrick4") +
+      geom_vline(xintercept = nakamoto_med, color = "green4") +
+      theme(plot.title = element_text(hjust = 0.5))
+```
+
+Now, let's look at the most common stopwords in the sample. I use the eleven most frequent words in the analysis.
+
+```{r, echo = FALSE, warning = FALSE, message = FALSE}
+    stopword_freq <- data %>%
+      group_by(author, word) %>%
+      summarise(total_usage = sum(freq)) %>%
+      pivot_wider(names_from = "author", values_from = "total_usage") %>%
+      mutate(total_use = musk + satoshi) %>%
+      arrange(desc(total_use)) %>%
+      rename(nakamoto = satoshi)
+    print(stopword_freq, n = 11)
+```
+
+## Single Word Analysis
+
+To start the analysis, I focus on the number of occurrences of the word "the" and its rate of use per 1000 words. The figure displays a jittered dotplot of the usage rate of "the" for each author. Even though there is considerable variability in usage within author, it seems as though Elon Musk might use the word at a slightly lower rate than Satoshi Nakamoto. 
+
+```{r, echo = FALSE}
+    data %>%
+      mutate(author = as.factor(author)) %>%
+      filter(word == "the") %>%
+      mutate(author = str_replace(author, "satoshi", "nakamoto")) %>%
+      ggplot() +
+      geom_jitter(aes(x = rate, y = author), color = "royalblue", height = 0.2) +
+      labs(
+        x = "Usage rate (per 1000 words)",
+        y = "Author", 
+        title = "Observed usage rates of the word 'the'"
+      ) +
+      theme(plot.title = element_text(hjust = 0.5))
+
+```
+
+In order to formally test this hypothesis, I first identify an appropriate sampling distribution. Let the random variable $Y_i$ denote the frequency with which the word "the" appears in writing sample $i$, where $i = \{1, \dotsc, 102\}$ for each of the $N=102$ writing samples (51 per author). Let the frequency $y_i$ of the word "the" have a Poisson density function with mean $(n_i\lambda/1000)$ where $n_i$ is the total number of words in writing sample $i$ and $\lambda$ is the true rate of "the" per 1000 words. Note that $(n_i\lambda/1000)$ is the average frequency of the word "the" per writing sample. The Poisson probability mass function is as follows:
+
+ $$f(Y_i = y_i | \lambda) = \text{exp}(-n_i\lambda/1000)\frac{(n_i\lambda/1000)^{y_i}}{y_i!}$$
+ 
+The Poisson sampling model is based on three assumptions about the underlying data. First, the lengths of the writing samples should be similar. We checked this condition with the density plots titled "Distribution of Sample Word Counts." Second, we assume that the frequency of the word "the" is independent between writing samples. In other words, the use of the word "the" in one sample does not effect the use of "the" in another sample. Third, we assume that the true frequency of the word "the" is constant over the writing samples. Under these assumptions, the joint mass function is the product of the Poisson densities:
+
+\begin{align}
+    L(\lambda) &= \prod_{i=1}^{102} f(Y_i = y_i | \lambda) \\
+    &= \bigg(\text{exp}(-n_i\lambda/1000)\frac{(n_i\lambda/1000)^{y_i}}{y_i!} \bigg)^{102} \\
+    &\propto \text{exp}(-102(n_i\lambda/1000)) (n_i\lambda/1000)^{\Sigma_{i=1}^{102}y_i}
+\end{align}
+
+Next, I construct a Gamma prior distribution to express an opinion about $\lambda$ before looking at the data. I choose a Gamma distribution because it is continuous, only gives weight to positive numbers, and only relies on two parameters; shape $\alpha > 0$ and rate $\beta > 0$. I do not have a strong prior about the true rate of "the" so I define a Gamma$(\alpha = 0.001, \beta = 0.001)$ distribution. This prior is considered non-informative because it strongly supports the values observed in the data. While it looks like it weights 0 the most, implying that the true rate is closest to 0 before seeing the data, the density assigned to 0 is very small. In fact, the value assigned to every value is small so it functions similarly to a uniform distribution. I now formally define the Gamma prior and graph it below. For the sake of clarity, let $\gamma = n_i\lambda/1000$ in the following calculations.
+
+\begin{align}
+    \pi(\gamma | \alpha, \beta)&= \frac{\beta^{\alpha}}{\Gamma(\alpha)}\gamma^{\alpha - 1}\text{exp}(-\beta \gamma) \\
+    &= \frac{0.001^{(0.001)}}{\Gamma(0.001)}\gamma^{(0.001 - 1)}\text{exp}(-0.001 \gamma) \\
+    &= \frac{0.993}{\Gamma(0.001)}\gamma^{(0.001-1)} \text{exp}(-\beta \gamma) \\
+    &\propto \gamma^{(0.001 - 1)} \text{exp}({-0.001 \gamma})
+\end{align}
+
+```{r, echo = FALSE, warning = FALSE}
+ggplot(data.frame(x = c(0, 80)), aes(x)) +
+  stat_function(fun = dgamma, color = "blue",
+                size = 1.5,
+                args = list(shape = 0.001, rate = 0.001)) +
+  ggplot2::annotate(geom = "text", x = 25, y = 0.005,
+           label = TeX("$(\\alpha,\\,  \\beta$) = (0.001, 0.001)"), size = 7 ) +
+  xlab(TeX("$\\lambda"))  +
+  ylab("Density") +
+  ylim(0, 0.01) +
+  ggtitle("Gamma Prior") +
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+The Poisson sampling model and Gamma prior makes the calculations for the posterior density rather straightforward. Using Bayes rule, I compute the posterior below. 
+
+\begin{align}
+    \pi(\lambda \hspace{3 pt} | \hspace{3 pt} y_1,\dotsc,y_{102}) &\propto L(\lambda)\times \pi(\lambda) \\
+    &\propto \text{exp}(-102\gamma) \gamma^{\Sigma_{i=1}^{102}y_i} \times \gamma^{(0.001 - 1)} \text{exp}({-0.001 \gamma}) \\
+    &\propto \gamma^{\Sigma_{i=1}^{102}y_i+0.001-1}\text{exp}(-\gamma(102 + 0.001)) 
+\end{align} 
+
+You might notice that the posterior density is Gamma($\alpha_n,\beta_n$), with updated parameters $\alpha_n$ and $\beta_n$ given by the equations below. This results show how the gamma prior distribution is the conjugate distribution for the Poisson sampling model; the prior and posterior densities come from the same family of distributions.
+
+\begin{align}
+    \alpha_n &= \Sigma_{i=1}^{102}y_i + 0.001 \\
+    &= \Sigma_{i=1}^{n}y_i + \alpha\\
+    \beta_n &= 102 + 0.001 \\
+    &= n + \beta
+\end{align}
+
+Now, I use the `runjags` and `coda` packages to implement a Bayesian model that estimates the true occurrence rate of the word "the" for both authors. This model serves to verify that the Poisson model is representing the observed data well. The quantile function prints out the 95\% confidence interval for the true rate of occurrence of the word "the" per 1000 words. The model estimates $\lambda$ to be between 78.17 and 86.07 which aligns with the previous graph of the observed usage rates. The Markov Chain Monte Carlo (MCMC) diagnostic plots also look good. The trace plot represents the simulated draws for the true rate of occurrence of the word "the" against the number of MCMC iterations. The trace plot touches every value in the sample space and is thick (looks like a furry caterpillar), signalling that the model is efficiently sampling from the posterior distribution before arriving at a conclusion. Secondly, the autocorrelation plot showcases the correlation between successive draws from the sampler. The autocorrelation at draw 1 is one (perfectly correlated with itself) before the autocorrelation quickly drops to zero as a function of the lag value. This is another good sign of an efficient sampler.
+
+```{r, message = FALSE, warning = FALSE}
+  # 1: Specify prior and likelihood model
+    modelString = "
+    model{
+    ## sampling
+    for (i in 1:N) {
+    y[i] ~ dpois(n[i] * lambda / 1000) # poisson sampling model
+    }
+    ## prior
+    lambda ~ dgamma(0.001, 0.001) # gamma prior
+    }
+    "
+    
+  # 2: Data
+    data1 <- data %>% filter(word == "the")
+    y <- data1$freq
+    n <- data1$total_words
+    the_data <- list("y" = y, "n" = n, N = length(y))
+    
+  # Initial values for MCMC
+    initsfunction <- function(chain){
+      .RNG.seed <- c(1,2)[chain]
+      .RNG.name <- c("base::Super-Duper",
+                     "base::Wichmann-Hill")[chain]
+      return(list(.RNG.seed = .RNG.seed,
+                  .RNG.name = .RNG.name))
+    }
+  
+  # Simulated posterior draws
+    set.seed(60657)
+    posterior <- run.jags(modelString,
+                          data = the_data,
+                          monitor = c("lambda"),
+                          n.chains = 1,
+                          burnin = 2000,
+                          sample = 5000,
+                          inits = initsfunction)
+    post <- as.mcmc(posterior)
+    quantile(as.mcmc(posterior$mcmc), c(.025, .5, .975))
+
+  # Plot MCMC diagnostics
+     plot(posterior)
+```
+
+While the sampler looks good, it is still important to check for *overdispersion* when working with count data. Overdispersion refers to the tendency of the Poisson sampling model to underestimate the variability of the observed frequencies in the data. To check for this, I simulate 5,000 $\lambda$ (the true rate of "the" per 1000 words) draws from the posterior distribution and construct 5000 poisson distribution with parameter $\lambda$. Then, I compare the standard deviation of the 5000 reconstructed poisson distributions to the observed data. The hypothesis test ($p = 0.168$) suggests that (while not significant) the standard deviation of the observed data is at the edge of the simulated distribution. For the sake of the argument, I conclude that there is more variability in the observed data than suggested by the Poisson sampling model.
+
+```{r}
+  # Simulate lambda draws and 5000 distributions
+    set.seed(9) # for reproducibility
+    one_rep <- function(i){
+      lambda <- post[i]
+      sd(rpois(length(y), n * lambda / 1000))
+    }
+    SD <- sapply(1:5000, one_rep)
+    
+  # Plot simulated SD vs. observed SD
+    ggplot(data.frame(sd = SD), aes(sd)) +
+      geom_histogram(color = "black",
+                     fill = "white",
+                     bins = 25) +
+      theme(text = element_text(size = 18)) +
+      geom_vline(xintercept = sd(y), size = 3) +
+      ylab("Number of Simulations") +
+      ggplot2::annotate('text', x = 13, y = 400, label = "Observed", size = 5)
+    
+  # Hypothesis test  
+    (prob1 <- mean(SD >= sd(y))) # Reject null hypothesis
+```
+
+Since the Poisson model suffers from overdispersion, I replace the Poisson with a negative binomial distribution. I modify the `modelString` and then run the same model with `dnegbin` instead of `dpois`. Mathematically, the negative binomial sampling density is defined as follows. Note that the likelihood function is a product of the negative binomial densities (similar to the Poisson likelihood). 
+$$f(Y_i = y_i | \alpha, \beta) = \frac{\Gamma(y_i + \alpha)}{\Gamma(\alpha)}p_i^{\alpha}(1-p)^{y_i}$$
+  where
+$$p_i = \frac{\beta}{\beta + n_i/1000}$$
+
+We are interested in the the ratio $\alpha/\beta$ which functions as $\lambda$ did in the Poisson distribution. The negative binomial likelihood is not a conjugate with the Gamma prior, so I will save everyone the time and not show the derivation of the posterior density. I conduct the same overdispersion as test before and present the graph of the posterior predictive check below. The variability of the observed data now falls within the range of the negative binomial sampling model's estimates. This is reflected by the p-value of the hypothesis test (0.58) which signals that the variability of the negative binomial sampling model's prediction for the frequencies of "the" is accurately represented.
+
+```{r, warning = FALSE, message = FALSE}
+  # 1: Specify prior and likelihood model
+    modelString = "
+    model{
+    ## sampling
+    for(i in 1:N){
+    p[i] <- beta / (beta + n[i] / 1000)
+    y[i] ~ dnegbin(p[i], alpha)
+    }
+    ## priors
+    mu <- alpha / beta
+    alpha ~ dgamma(.001, .001)
+    beta ~ dgamma(.001, .001)
+    }
+    "
+  # 2 & 3: Data and initial values same as previous model
+
+  # 4: Simulated posterior draws
+    posterior <- run.jags(modelString,
+                        data = the_data,
+                        monitor = c("alpha", "beta", "mu"),
+                        n.chains = 1,
+                        burnin = 2000,
+                        sample = 5000,
+                        inits = initsfunction)
+    post <- as.data.frame(as.mcmc(posterior))
+
+  # Posterior predictive check
+    set.seed(14207)
+    one_rep <- function(i){
+      p <- post$beta[i] / (post$beta[i] + n / 1000)
+      sd(rnbinom(length(y), size = post$alpha[i], prob = p))
+    }
+    sapply(1:5000, one_rep) -> SD
+      ggplot(data.frame(sd = SD), aes(sd)) +
+      geom_histogram(color = "black",
+                     fill = "white",
+                     bins = 25) +
+      theme(text=element_text(size=18)) +
+      geom_vline(xintercept = sd(y), size = 3 ) +
+      ylab("Number of Simulations") +
+      ggplot2::annotate('text', x = 16, y = 500,
+               label = "Observed", size = 7)
+    (prob2 <- mean(SD >= sd(y))) # fail to reject null hypothesis
+```
+
+## Did Elon Musk invent Bitcoin?
+
+Now that the model is accurately representing the underlying data, we can use this framework to evaluate the initial question; do Elon Musk and Satoshi Nakamoto use certain stopwords at the same frequency? If their speech patterns are very similar, this could provide evidence for Musk and Nakamoto being the same person. In order to extend this analysis to a comparison of rates, we focus on $\mu_N / \mu_M$, the ratio of rates (per 1000 words) of the eleven aforementioned stopwords. In the model, we focus on the ratio parameter and fit eleven separate models (one for each stopword). We can then look at the the posterior median and distribution of the simulated draws. The code below defines the model and estimates the posterior distribution. 
+
+```{r, cache = TRUE,  warning = FALSE, message = FALSE, results = "hide"}
+   # 1: Specify prior and likelihood model
+      modelString = "
+      model{
+      ## sampling
+      for(i in 1:N1){
+      p1[i] <- beta1 / (beta1 + n1[i] / 1000)
+      y1[i] ~ dnegbin(p1[i], alpha1)
+      }
+      for(i in 1:N2){
+      p2[i] <- beta2 / (beta2 + n2[i] / 1000)
+      y2[i] ~ dnegbin(p2[i], alpha2)
+      }
+      ## priors
+      alpha1 ~ dgamma(.001, .001)
+      beta1 ~ dgamma(.001, .001)
+      alpha2 ~ dgamma(.001, .001)
+      beta2 ~ dgamma(.001, .001)
+      ratio <- (alpha2 / beta2) / (alpha1 / beta1)
+      }
+      "
+  # 2: Initial values  
+    initsfunction <- function(chain){
+      .RNG.seed <- c(1,2)[chain]
+      .RNG.name <- c("base::Super-Duper",
+                     "base::Wichmann-Hill")[chain]
+      return(list(.RNG.seed = .RNG.seed,
+                  .RNG.name = .RNG.name))
+    }
+    
+  # Select 11 most used words
+    pop_words <- data %>%
+      group_by(word) %>%
+      summarise(sum = sum(freq)) %>%
+      arrange(desc(sum)) %>%
+      filter(row_number() <= 11)
+    
+  # Define to repeat analysis for 11 words
+    bayes_one_word <- function(theword) {
+      d1 <- filter(data, author == "musk",
+                   word == theword)
+      d2 <- filter(data, author == "satoshi",
+                   word == theword)
+      the_data <- list("y1" = d1$freq,
+                       "n1" = d1$total_words,
+                       "N1" = length(d1$freq),
+                       "y2" = d2$freq,
+                       "n2" = d2$total_words,
+                       "N2" = length(d2$freq))
+      posterior <- run.jags(modelString,
+                            data = the_data,
+                            monitor = c("ratio"),
+                            n.chains = 1,
+                            burnin = 2000,
+                            sample = 5000,
+                            inits = initsfunction)
+      quantile(as.mcmc(posterior$mcmc), c(.025, .5, .975))
+    }  
+    
+  # Save results
+    S <- sapply(pop_words$word, bayes_one_word)
+    df <- data.frame(Word = pop_words$word,
+                     LO = S[1, ],
+                     M = S[2, ],
+                     HI = S[3, ]) 
+```
+
+The graph below displays the distributions of the posterior medians for each stopword. Intervals that include one imply that there was no significant difference in the rate of usage of a particular word. Intervals to the left (right) of the vertical line indicate that Musk (Nakamoto) was a more frequent user of that word. From this analysis, it appears that Elon Musk and Satoshi Nakamoto have different speech patterns and are not the same person. One thing to note is that Nakamoto's writing samples stop in 2010 (when he stopped communicating with the public) whereas Musk's writing samples range from 2017 to 2022. As a result, there exists a possibility that they are the same person but their stopword frequency rates evolved over time as their general speech patterns changed.
+
+```{r}
+  # Plot results
+    ggplot(df, aes(x = Word, y = M)) +
+      geom_errorbar(aes(ymin = LO, ymax = HI), width = 0.3, size = 1) +
+      geom_point() + coord_flip() +
+      theme(text = element_text(size = 13),
+            plot.title = element_text(hjust = 0.5)) +
+      ylab("Ratio") +
+      geom_hline(yintercept = 1) +
+      labs(
+        title = "Posterior Distribution of Stopwords"
+      ) +
+      ggplot2::annotate('text', x = 5.5, y = 0.45,
+                        label = "Musk", size = 5) +
+      ggplot2::annotate('text', x = 8.5, y = 1.4,
+                        label = "Nakamoto", size = 5)
+```
+
+## Acknowledgements
+
+Thanks to Jim Albert and Monika Hu's *Probability and Bayesian Modeling* (2020) for the inspiration and general guidance.
+
+

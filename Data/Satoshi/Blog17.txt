@@ -1,0 +1,22 @@
+The current version will work fine. They’ll each
+connect over the Internet, while incoming
+connections only come to the host that port 8333 is
+routed to.
+Page 75
+As an optimisation, I’ll make a switch “-
+connect=1.2.3.4” to make it only connect to a
+specific address. You could make your extra nodes
+connect to your primary, and only the primary
+connects over the Internet. It doesn’t really matter
+for now, since the network would have to get huge
+before the bandwidth is anything more than trivial.
+
+Indeed, Bitcoin is a distributed secure timestamp
+server for transactions. A few lines of code could
+create a transaction with an extra hash in it of
+anything that needs to be timestamped. I should add
+a command to timestamp a file that way.
+
+Right, and I’d like to see more of a library
+interface that could be called from programming
+or scripting languages, on the client side as well.

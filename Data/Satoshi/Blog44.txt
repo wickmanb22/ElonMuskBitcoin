@@ -1,0 +1,73 @@
+I’ve been working on writing the alert system. Alerts
+are broadcast through the network and apply to a
+range of version numbers. Alert messages are signed
+with a private key that only I have.
+Nodes can do two things in response to an alert:
+• Put a warning message on the status bar.
+• Make the money handling methods of the jsonrpc interface return an error.
+Page 249
+In cases like the overflow bug or a fork where users
+may not be able to trust received payments, the
+alert should keep old versions mostly safe until they
+upgrade. Manual users should notice the status bar
+warning when looking for received payments, and
+the json-rpc safe mode stops automated websites
+from making any more trades until they’re upgraded.
+The json-rpc methods that return errors during an
+alert are:
+
+If you’re so paranoid that you’re getting hysterical
+over this, then surely you’re paranoid enough that if
+a warning message displays on the status bar, you’ll
+check the website and forum.
+I think if another bug like the overflow bug occurs,
+it’s important that automated websites stop trading
+until their admins can check out what’s going on and
+decide what to do. If you decide it’s a false alarm
+Page 250
+and want to take your chances, you can use the“-
+disablesafemode” switch.
+
+It can’t do arbitrary actions remotely. Maybe some of
+you are responding to other posters who suggested
+the alert system should do more?
+If there is an alert, the following json-rpc methods
+return an error:
+
+The remaining 14 methods function as normal.
+I believe the safer option should be enabled by
+default. If you want your server to keep trading and
+ignore an alert saying the money its receiving might
+be like the money from the overflowbug, then you
+can use the switch and not blame anyone else if you
+lose your money.
+Worst case if you leave alerts enabled, your site
+stops trading until you upgrade or add
+thedisablesafemode switch.
+Page 251
+Getting surprised by some temporary down time
+when your node would otherwise be at risk is better
+than getting surprised by a thief draining all your
+inventory.
+Someday when we haven’t found any new bugs for a
+long time and it has been thoroughly security
+reviewed without finding anything, this can be scaled
+back. I’m not arguing that this is the permanent way
+of things forever. It’s still beta software.
+
+WRT the alert system, who cares? The most the key
+can do is temporarily disable six json-rpc commands
+until the site owners either add the disable safe
+mode switch or upgrade. All nodes keep running and
+generating, the network stays up. If I’m not
+available, any script kiddie can figure out how to add
+two characters and make a new version that disables
+the alert system. It would be a temporary
+inconvenience only.
+
+This is what makes me think the people objecting
+don’t know what they’re talking about. It can’t “shut
+down the complete network”.
+
+My apologies, your post was indeed a question not a
+statement.

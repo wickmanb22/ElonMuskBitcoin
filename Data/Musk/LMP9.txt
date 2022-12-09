@@ -1,0 +1,3 @@
+Hopefully, towards the end this year we will be launching Falcon Heavy. Falcon Heavy ended up being a much more complex program than we thought.
+
+It sounds like Falcon Heavy should be easy because it's two Falcon 9 first stages strapped onto a center first stage as boosters. It is actually not easy. We had to redesign almost everything except the upper stage in order to take the increased loads. Falcon Heavy ended up being much more a new vehicle than we realized, so it took us a lot longer to get it done, but the boosters have all now been tested and they are on their way to Cape Canaveral. And we are now beginning serious development of BFR (Fig. 4).

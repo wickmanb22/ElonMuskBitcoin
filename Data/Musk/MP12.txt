@@ -1,0 +1,43 @@
+In many ways, the rocket booster is really a scaled-up
+version of the Falcon 9 booster (Fig. 11). There are a lot of
+similarities, such as the grid fins and clustering a lot of engines
+at the base. The big differences are that the primary structure is
+an advanced form of carbon fiber as opposed to aluminum
+lithium, we use autogenous pressurization, and we get rid of
+the helium and the nitrogen.
+
+Each rocket booster uses 42 Raptor engines (Fig. 12). It is a
+lot of engines, but with Falcon Heavy, which should launch
+early next year, there are 27 engines on the base. Therefore, we
+have considerable experience with a large number of engines.
+It also gives us redundancy so that if some of the engines fail,
+you can still continue the mission and everything will be fine.
+However, the main job of the booster is to accelerate the
+spaceship to around 8,500 km/h. For those who are less familiar with orbital dynamics, it is all about velocity and not
+about height.
+In the case of other planets, though, which have a gravity
+well that is not as deep, such as Mars, the moons of Jupiter,
+conceivably one day maybe even Venus—well, Venus will be a
+little trickier—but for most of the solar system, you only need
+the spaceship. You do not need the booster if you have a lower
+gravity well. Therefore, no booster is needed on the moon or
+Mars or any of the moons of Jupiter or Pluto. The booster is
+just there for heavy gravity wells.
+We have also been able to optimize the propellant needed
+for boost back and landing to get it down to about 7% of the
+lift-off propellant load. With some optimization, maybe we
+can get it down to about 6%.
+We are also now getting quite comfortable with the accuracy of the landing. If you have been watching the Falcon 9
+landings, you will see that they are getting increasingly closer
+to the bull’s eye. In particular, with the addition of maneuvering thrusters, we think we can actually put the booster right
+back on the launch stand. Then, those fins at the base are
+essentially centering features to take out any minor position
+mismatch at the launch site.
+So, that is what it looks like at the base. We think we only
+need to gimbal or steer the center cluster of engines. There
+are seven engines in the center cluster. Those would be the ones that move for steering the rocket, and the other ones
+would be fixed in position. We can max out the number of
+engines because we do not have to leave any room for
+gimbaling or moving the engines. This is all designed so
+that you could actually lose multiple engines, even at liftoff or anywhere in flight, and still continue the mission
+safely.

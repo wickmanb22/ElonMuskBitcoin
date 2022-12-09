@@ -1,0 +1,2 @@
+For Mars entry, you are entering very quickly, going seven and a half kilometers a second. For Mars, there will be some ablation of the heat shield, sort of like a brake pad wearing away. It is a multi-use heat shield, but unlike for Earth operations, it is coming in hot enough that you really will see some wear of the heat shield.
+Because Mars has an atmosphere, albeit not a particularly dense one, you can remove almost all the energy aerodynamically. And we have proven out supersonic retropropulsion many times with Falcon 9, so we feel very comfortable about that.

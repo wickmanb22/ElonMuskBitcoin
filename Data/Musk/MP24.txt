@@ -1,0 +1,5 @@
+This presentation will cover the updated design for what we are currently calling BFR. The most important thing that I want to convey in this presentation is that I think we have figured out how to pay for it. This is very important.
+
+In last year's presentation, we were really searching for the right way to pay for this thing. We went through various ideas—Kickstarter, collecting underpants, etc. These didn't pan out, but now we think we have got a way to achieve this.
+
+Our updated design leverages a smaller vehicle, still pretty big but a single vehicle that can do everything that's needed for greater Earth orbit activity. Essentially we want to make our current vehicles redundant. We want to have one system—one booster and one ship—that replaces Falcon 9, Falcon Heavy and Dragon. If we can do that, then all the resources that are used for Falcon 9, Falcon Heavy and Dragon can be applied to this system. That's really fundamental.

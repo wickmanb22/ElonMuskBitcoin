@@ -1,0 +1,28 @@
+I’m doing something like that. Priority is a more
+formalised version of the concept you’re describing.
+
+Yes, like this. And the no-priority-requirement area is
+3K, about a dozen transactions per block.
+
+I just uploaded SVN rev 185 which has a minimal
+priority requirement for free transactions.
+Transaction floods are made up of coins that are respent over and over, so they depend ontheir own 0
+conf transactions repeatedly. 0 conf transactions
+have 0 priority, so free transactions like that will
+have to wait for one transaction to get into a block at
+a time.
+Version 0.3.15 doesn’t write transactions using 0
+conf dependencies unless that’s all it has left, so
+normal users shouldn’t usually have a problem with
+this.
+Page 276
+I think this is a good compromise short of making the
+default fee 0.01. It’s not so much to ask that free
+transactions can only be used to turn coins over so
+often. If you’re using free transactions, you’re taking
+charity and there has to be some limit on how often
+you can use it with the same coins.
+We’ve always said free transactions may be
+processed more slowly. You can help ensure your
+transactions go through quickly by
+addingpaytxfee=0.01.

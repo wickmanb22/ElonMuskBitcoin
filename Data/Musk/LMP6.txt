@@ -1,0 +1,5 @@
+The next key technology is automated rendezvous and docking. In order to refill the spaceship in orbit, you have to be able to rendezvous and dock with the spaceship with very high precision and transfer propellant. That is one of things that we have perfected with Dragon. Dragon 1 will do an automated rendezvous and docking without any pilot control to the space station.
+
+Dragon 1 currently uses the Canadarm for the final placement onto the space station. Dragon 2, which launches next year, will not need to use the Canadarm as it will directly dock with the space station, and it can do so with zero human intervention. You just press “go” and it will dock.
+
+Dragon has also allowed us to perfect heat shield technology. When you enter at a high velocity, you will melt almost anything. The reason meteors do not reach Earth is they melt or disintegrate before they reach the ground, unless they are very big. You have to have a sophisticated heat shield technology that can withstand unbelievably high temperatures and that is what we have been perfecting with Dragon—also a key part of any planet colonizing system.

@@ -1,0 +1,22 @@
+For the spaceship itself, in the top, we have the pressurized
+compartment. Then, beneath that is where we would have the
+unpressurized cargo, which would be really flat-packed—a very
+dense format. Below that is the liquid oxygen tank (Fig. 13).
+The liquid oxygen tank is probably the hardest piece of
+this whole vehicle because it must handle propellant at the
+coldest level and the tanks themselves actually form the
+airframe. The airframe structure and the tank structure are
+combined, as is the case in all modern rockets. In aircraft,
+for example, the wing is really a fuel tank in the shape of
+a wing.
+The oxygen tank has to take the thrust loads of ascent and
+the loads of reentry, and then it has to be impermeable to gaseous oxygen, which is tricky, and nonreactive to gaseous oxygen. Therefore, that is the most difficult piece of the spaceship
+itself, which is also why we started on that element.
+
+Below the oxygen tank is the fuel tank, and then the engines are mounted directly to the thrust cone on the base.
+There are six of the high-efficiency vacuum engines around
+the perimeter, and those do not gimbal. There are three of the
+sea-level versions of the engine, which do gimbal and provide
+the steering, although we can do some amount of steering
+if you are in space with differential thrust on the outside
+engines.

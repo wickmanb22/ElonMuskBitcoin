@@ -1,0 +1,95 @@
+Bitcoin isn’t currently practical for very small
+micropayments. Not for things like pay per search or
+per page view without an aggregating mechanism,
+not things needing to pay less than0.01. The dust
+spam limit is a first try at intentionally trying to
+prevent overly small micropayments like that.
+Page 177
+Bitcoin is practical for smaller transactions than are
+practical with existing payment methods. Small
+enough to include what you might call the top of the
+micropayment range. But it doesn’t claim to be
+practical for arbitrarily small micropayments.
+
+Forgot to add the good part about micropayments.
+While I don’t think Bitcoin is practical for smaller
+micropayments right now, it will eventually be as
+storage and bandwidth costs continue to fall. If
+Bitcoin catches on on a big scale, it may already be
+the case by that time. Another way they can become
+more practical is if I implement client-only mode and
+the number of network nodes consolidates into a
+smaller number of professional server farms.
+Whatever size micropayments you need will
+eventually be practical. I think in 5 or 10 years, the
+bandwidth and storage will seem trivial.
+I am not claiming that the network is impervious to
+DoS attack. I think most P2P networks can be DoS
+attacked in numerousways. (On a side note, I read
+that the record companies would like to DoS all the
+file sharing networks, but they don’t want to break
+the anti-hacking/anti-abuse laws.)
+If we started getting DoS attacked with loads of
+wasted transactions back and forth, you would need
+to start paying a 0.01 minimum transaction fee.
+0.1.5 actually had an option to set that, but I took it
+Page 178
+out to reduce confusion. Free transactions are nice
+and we can keep it that way if people don’t abuse
+them.
+That brings up the question: if there was a minimum
+0.01 fee for each transaction, should we
+automatically add the fee if it’s just the minimum
+0.01? It would be awfully annoying to ask each time.
+If you have 50.00 and send 10.00, the recipient
+wouldget 10.00 and you’d have 39.99 left. I think it
+should just add it automatically. It’s trivial compared
+to the fees many other types of services add
+automatically.
+
+One alternative is to use a round-up system. You pay
+for, say, 1000 pages or images or downloads or
+searches or whatever at a time. When you’ve used
+up your 1000 pages, you pay for another 1000
+pages. If you only use 1 page, then you have 999 left
+that you may never use, but it’s not a big deal
+because the cost per 1000 is still small.
+Or you could pay per day. The first time you access
+the site on a given day, you pay for 24 hours of
+access.
+Per 1000 or per day may be easier for consumers to
+get their heads around too. They worry about per
+item because it’s harder to figure if it might add up
+too fast. Unlimited for 24 hours they know what the
+cost will be. Or if 1000 seems like plenty, they’re not
+worrying that it’s costing more with each click if they
+figure 1000 is more than they’ll probably use.
+
+If you’re only going to have one person work on
+building the block, that could take days. Oh, do you
+mean send a different variation to each node with
+the tx fee written to them?
+The way it is now, it’s whoever builds this gets it.
+If we needed to, we could have a BitTorrent-esque titfor-tat for transaction broadcast. Relay paying
+Page 181
+transactions to me, or I won’t relay them to you. It
+probably won’t be an actual problem though. It only
+takes one node relaying like it should to cancel out 7
+others greedily not relaying.
+
+It would be nice to keep the blk*.dat files small as
+long as we can.
+The eventual solution will be to not care how big it
+gets.
+But for now, while it’s still small, it’s nice to keep it
+small so new users can get going faster. When I
+eventually implement client-only mode, that won’t
+matter much anymore.
+There’s more work to do on transaction fees. In the
+event of a flood, you would still be able to jump the
+queue and get your transactions into the next block
+by paying a 0.01 transaction fee. However, I haven’t
+had time yet to add that option to the UI.
+Scale or not, the test network will react in the same
+ways, but with much less wasted bandwidth and
+annoyance.

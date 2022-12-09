@@ -1,0 +1,17 @@
+tidyverse
+ggplot2
+tibble
+tidyr
+readr
+purrr
+dplyr
+stringr
+forcats
+data.table
+ggthemes
+NLP
+tm
+SnowballC
+latex2exp
+runjags
+coda

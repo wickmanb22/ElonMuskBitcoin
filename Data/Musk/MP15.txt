@@ -1,0 +1,6 @@
+The ingredients are there on Mars to create a propellant plant
+with relative ease because the atmosphere is primarily CO2, and
+water-ice is almost everywhere. There is CO2 plus H2O to make
+methane, CH4, and oxygen, O2, using the Sabatier reaction.
+The trickiest thing really is the energy source, which can be
+done with a large field of solar panels (Fig. 16).

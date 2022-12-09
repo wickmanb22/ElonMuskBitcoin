@@ -1,0 +1,16 @@
+I was really excited to see all our Raptor engines firing
+(Fig. 21). The Raptor is a really tricky engine. It is a lot trickier
+than a Merlin because it is a full-flow stage combustion, with
+much higher pressure. I am amazed that it did not blow up on
+the first firing, but fortunately it was good.
+Part of the reason for making the engine small, although it has three times the thrust of a Merlin, it is actually only about the same size as a Merlin engine
+because it has three times the operating pressure. That
+means we can use many of the production techniques that
+we honed with Merlin.
+We are currently producing Merlin engines at almost 300
+per year. Therefore, we understand how to make rocket engines in volume. Hence, even though the Mars vehicle uses 42
+on the base and nine on the upper stage—so we have 51 engines to make—that is well within our production capabilities
+for Merlin. This is a similarly sized engine to Merlin, except
+for the expansion ratio. We therefore feel really comfortable
+about being able to make this engine in volume at a price that
+does not break our budget.

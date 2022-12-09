@@ -1,0 +1,51 @@
+Figure 6 is a cross-section of the ship. In some ways, it is not
+that complicated. It is made primarily of an advanced carbon
+fiber. The carbon-fiber part is tricky when dealing with deep
+cryogens and trying to achieve both liquid and gas impermeability and not have gaps occur due to cracking or pressurization that would make the carbon fiber leaky. Hence,
+it is a fairly significant technical challenge to make deeply
+cryogenic tanks out of carbon fiber. It is only recently that
+carbon-fiber technology has reached the point where we can
+do this without having to create a liner on the inside of the
+tanks, which would add mass and complexity.
+This is particularly tricky for the pressurization of the hot
+gases. This is likely to be autogenously pressurized, which means
+that we gasify the fuel and the oxygen through heat exchanges
+in the engine and use that to pressurize the tanks. So, we gasify
+the methane and use that to pressurize the fuel tank, and we
+gasify the oxygen and use that to pressurize the oxygen tank.
+
+This is a much simpler system than what we have with Falcon
+where we use helium for pressurization and nitrogen for gas
+thrusters. In this case, we would autogenously pressurize and
+then use gaseous methane and oxygen for the control thrusters.
+Hence, you really only need two ingredients for this, as opposed
+to four in the case of Falcon 9, or five if you consider the
+ignition liquid. In this case, we would use spark ignition.
+Figure 7 gives you a sense of vehicles by performance,
+current and historic. For expendable mode, the vehicle that we
+were proposing would do about 550 tons and about 300 tons
+in reusable mode. That compares to the Saturn V max capability of 135 tons.
+Figure 8 gives a better sense of things. The dark gray bars
+show the performance of the vehicle, the payload to orbit of
+the vehicle. What it represents is the size efficiency of the
+vehicle. With most rockets, including ours, that are currently
+flying, the performance bar is only a small percentage of the
+actual size of the rocket.
+However, with the interplanetary system, which will initially
+be used for Mars, we believe we have improved the design
+performance massively. It is the first time a rocket performance
+bar will actually exceed the physical size of the rocket.
+Figure 9 gives you a more direct comparison. The thrust level
+is enormous. We are talking about a lift-off thrust of 13,000
+tons, so it will be quite tectonic when it takes off. However, it
+does fit on Pad 39A, which NASA has been kind enough to allow
+us to use because they oversized the pad in doing Saturn V. As a
+result, we can use a much larger vehicle on that same launchpad
+
+In the future, we expect to add additional launch locations,
+probably adding one on the south coast of Texas, but this gives
+you a sense of the relative capability.
+However, these vehicles have very different purposes. This
+is really intended to carry huge numbers of people, ultimately
+millions of tons of cargo to Mars. Therefore, you really need
+something quite large in order to do that

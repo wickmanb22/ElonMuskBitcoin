@@ -1,0 +1,21 @@
+We started the development with what are probably the
+two most difficult key elements of the design of the interplanetary spaceship, the engine and rocket booster. The
+Raptor engine is going to be the highest chamber pressure
+engine of any kind ever built, and probably the highest
+thrust-to-weight (Fig. 10).
+
+It is a full-flow staged combustion engine, which maximizes the theoretical momentum that you can get out of a
+given source fuel and oxidizer. We subcool the oxygen and
+methane to densify it. Compared with when used close to
+their boiling points in most rockets, in our case, we load the
+propellants close to their freezing point. That can result in a
+density improvement of around 10%–12%, which makes an
+enormous difference in the actual result of the rocket. It gets
+rid of any cavitation risk for the turbo pumps, and it makes it
+easier to feed a high-pressure turbo pump if you have very
+cold propellant.
+One of the keys here, though, is the vacuum version of the
+Raptor having a 382-second ISP. This is critical to the whole
+Mars mission and we are confident we can get to that number
+or at least within a few seconds of that number, ultimately
+maybe even exceeding it slightly.

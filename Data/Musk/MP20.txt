@@ -1,0 +1,20 @@
+We are going to try to send something to Mars on every
+Mars rendezvous from this point on. We plan to send Dragon
+2, which is a propulsive lander, to Mars in a couple of years,
+and then probably do another Dragon mission in 2020
+(Fig. 20).
+We want to establish a steady cadence, so that there is always a flight leaving, just like there is a train leaving the
+station. With every Mars rendezvous, we will be sending at
+least a Dragon to Mars and ultimately the big spaceship. If
+there are people who are interested in putting payloads on
+Dragon, you know you can count on a ship that is going to
+transport something on the order of at least two or three tons
+of useful payloads to the surface of Mars.
+That is part of the reason why we designed Dragon 2 to be a
+propulsive lander. As a propulsive lander, you can go anywhere in the solar system. You could go to the moon. You
+could go to, well, anywhere! However, if something relies on
+wings, you can pretty much only land on Earth because you need a runway, and most places do not have a runway. As for
+parachutes, you cannot use those anywhere that does not have
+a dense atmosphere. However, propulsive works anywhere.
+Therefore, we should be able to land Dragon on any solid or
+liquid surface in the solar system.

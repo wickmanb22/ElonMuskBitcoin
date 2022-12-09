@@ -1,0 +1,38 @@
+Full size 530x529 image for scaling down to custom
+sizes:
+http://www.bitcoin.org/download/bitcoin530.png
+The perspective shadow was too thick on the larger
+sizes. Iupdated 32, 48 and the full size.
+I release these images into the public domain
+(copyright-free). I request that derivative works be
+made public domain.
+
+Good suggestion. I made the B slightly lighter and
+the background slightly darker. Very slightly. The
+Page 112
+foreground is now exactly the same colour as the BC
+in the old one.
+It’s kind of OK if you can’t easily read the B in the
+16x16. At that size, you just need to see that it’s a
+coin. It doesn’t matter so much what’s embossed on
+it, just that there be some detail therebecause it
+wouldn’t look like a coin if it was a blank smooth
+circle.
+It’s slightly wider than tall because the dark
+perspective under it goes more to the right than
+down.
+I finished and posted the 32x31 and 48x47 versions
+in the first message. I like the 48 a lot.
+How does everyone feel about the B symbol with the
+two lines through the outside? Can we live with that
+as our logo?
+
+I don’t know how to do SVG, but I did the original
+very large, over500 pixels across, so it can be scaled
+down. I’ll give the original when I’m finished.
+I had to custom tweak each icon size so the vertical
+lines land square on their pixels, otherwise they’re
+ugly blurry and inconsistent. Such is the challenge of
+Page 113
+making icons. The original will be good for scaling to
+custom sizes between 48 and 500 but not smaller.

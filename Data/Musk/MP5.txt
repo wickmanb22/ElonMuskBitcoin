@@ -1,0 +1,20 @@
+To make Mars trips possible on a large enough scale to
+create a self-sustaining city, full reusability is essential. Full
+reusability is really the super-hard one. It is very difficult to
+achieve reusability even for an orbital system, and that
+challenge becomes substantially greater for a system that has
+to go to another planet.
+You could use any form of transport as an example of the
+difference between reusability and expendability in aircraft. A
+car, bicycle, horse, if they were single-use—almost no one
+would use them; it would be too expensive. However, with
+frequent flights, you can take an aircraft that costs $90
+million and buy a ticket on Southwest right now from Los
+Angeles to Vegas for $43, including taxes. If it were single
+use, it would cost $500,000 per flight. Right there, you can
+see an improvement of four orders of magnitude.
+Now, this is harder—reusability does not apply quite as much
+to Mars because the number of times that you can reuse the
+spaceship pod of the system is less often because the Earth–
+Mars rendezvous only occurs every 26 months. Therefore, you
+get to use the spaceship part approximately every 2 years

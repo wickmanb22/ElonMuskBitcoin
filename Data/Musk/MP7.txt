@@ -1,0 +1,12 @@
+Producing propellant on Mars is obviously also very important (Table 3). Again, if we did not do this, it would have at
+least a half order of magnitude increase in the cost of a trip. It
+would be pretty absurd to try to build a city on Mars if your
+spaceships just stayed on Mars and did not go back to Earth.
+You would have a massive graveyard of ships; you have to do
+something with them.
+It would not really make sense to leave your spaceships on
+Mars; you would want to build a propellant plant on Mars and
+send the ships back. Mars happens to work out well for that
+because it has a CO2 atmosphere, it has water-ice in the soil,
+and with H2O and CO2, you can produce methane (CH4) and
+oxygen (O2).

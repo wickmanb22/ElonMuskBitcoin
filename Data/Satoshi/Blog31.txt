@@ -1,0 +1,16 @@
+Excellent choice of a first project, nice work. I had
+planned to do this exact thing if someone else didn’t
+do it, so when it gets too hard for mortals to
+generate 50BTC, new users could get some coins to
+play with right away. Donations should be able to
+keep it filled. The display showing the balance in the
+dispenser encourages people to top it up.
+You should put a donation bitcoin address on the
+page for those who want to add funds to it, which
+ideally should update to a new address whenever it
+receives something.
+
+5 BTC seems like a lot these days, maybe the normal
+amount should be 1 or 2 BTC.
+This is an important service so new users can at
+least get something if generating is too hard.

@@ -1,0 +1,47 @@
+Figure 5 describes the overall system (for a full simulation,
+see www.spacex.com/mars). The rocket booster and the
+spaceship take off and launch the spaceship into orbit. The
+rocket booster then comes back quite quickly, within about 20
+minutes. So, it can actually launch the tanker version of the
+spacecraft, which is essentially the same as the spaceship but
+filling up the unpressurized and pressurized cargo areas with
+propellant tanks. This also helps lower the development cost,
+which obviously will not be small.
+Then, the propellant tanker goes up anywhere from three to
+five times to fill the tanks of the spaceship in orbit. Once the
+tanks are full, the cargo has been transferred, and we reach the
+Mars rendezvous timing, which is roughly every 26 months,
+that is when the ship would depart.
+Over time, there were would be many spaceships. You
+would ultimately have upwards of 1,000 or more spaceships
+waiting in orbit. Hence, the Mars Colonial fleet would depart
+en masse.
+It makes sense to load the spaceships into orbit because you
+have got 2 years to do so, and then you can make frequent use
+of the booster and the tanker to get really heavy reuse out of
+those. With the spaceship, you get less reuse because you have
+to consider how long it is going to last—maybe 30 years, which
+might be perhaps 12–15 flights of the spaceship at most. 
+
+Therefore, you really want to maximize the cargo of the
+spaceship and reuse the booster and the tanker as much as
+possible. Hence, the ship goes to Mars, gets replenished, and
+then returns to Earth.
+This ship will be relatively small compared with the Mars
+interplanetary ships of the future. However, it needs to fit 100
+people or thereabouts in the pressurized section, carry the
+luggage and all of the unpressurized cargo to build propellant
+plants, and to build everything from iron foundries to pizza
+joints to you name it—we need to carry a lot of cargo.
+The threshold for a self-sustaining city on Mars or a civilization would be a million people. If you can only go every 2
+years and if you have 100 people per ship, that is 10,000 trips.
+Therefore, at least 100 people per trip is the right order of
+magnitude, and we may end up expanding the crew section
+and ultimately taking more like 200 or more people per flight
+in order to reduce the cost per person.
+However, 10,000 flights is a lot of flights, so ultimately
+you would really want in the order of 1,000 ships. It would
+take a while to build up to 1,000 ships. How long it would
+take to reach that million-person threshold, from the point
+at which the first ship goes to Mars would probably be somewhere between 20 and 50 total Mars rendezvous—so it would
+take 40–100 years to achieve a fully self-sustaining civilization on Mars

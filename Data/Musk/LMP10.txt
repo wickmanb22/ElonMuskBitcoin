@@ -1,0 +1,3 @@
+From Figure 5, you can see that the payload difference between BFR and the other vehicles is quite dramatic. With BFR in fully reusable configuration, without any orbital refueling, we expect to have a payload capability of 150 tons to low Earth orbit. That compares to about 30 tons for Falcon Heavy, which is partially reusable. Where this really makes a tremendous difference is in the cost, which will be discussed later in the presentation.
+
+With BFR, you can get a sense of scale by looking at the tiny person in the image below. It is really quite a big vehicle. Main body diameter is about 9 meters or 30 feet and the booster is lifted by 31 Raptor engines that produce a thrust of about 5,400 tons, lifting the 4,400 ton vehicle straight up.

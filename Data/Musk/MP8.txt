@@ -1,0 +1,27 @@
+Picking the right propellant is also important. There are
+three main choices, and they each have their merits (Table 4).
+First, there is kerosene, or rocket propellant-grade kerosene,
+essentially a highly refined form of jet fuel. It helps keep the
+vehicle size small, but because it is a very specialized form
+of jet fuel, it is quite expensive. Its reusability potential
+is lower. It would be very difficult to make this on Mars because there is no oil. Propellant transfer is pretty good but
+not great.
+Hydrogen, although it has a high specific impulse, is very
+expensive, and it is incredibly difficult to keep from boiling
+off because liquid hydrogen is very close to absolute zero as a
+liquid. Therefore, the installation required is tremendous, and
+the energy cost on Mars of producing and storing hydrogen
+would be very high.
+Therefore, when we looked at the overall system optimization, it was clear that methane was the clear winner.
+Methane would require from 50% to 60% of the energy on
+Mars to refill propellant using the propellant depot, and the
+technical challenges are a lot easier. We therefore think
+methane is better almost across the board.
+We started off initially thinking that hydrogen would
+make sense, but ultimately came to the conclusion that the
+best way to optimize the cost-per-unit mass to Mars and back
+is to use an all-methane system—or technically, deep-cryo
+methalox.
+Whatever system is designed, whether by SpaceX or
+someone else, these are the four features that need to be addressed in order for the system really to achieve a low cost per
+ton to the surface of Mars
